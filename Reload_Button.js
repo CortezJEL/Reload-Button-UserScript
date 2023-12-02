@@ -2,8 +2,15 @@
 // @name            Reload-Button-UserScript
 // @description     Adds a simple reload button
 // @license         AGPL-V3
-// @version         1.0
+// @version         1.1
 // @author          John Litzow
+// @namespace       https://www.searchforjohn.com/
+// @homepageURL     https://github.com/CortezJEL/Reload-Button-UserScript
+// @homepage        https://github.com/CortezJEL/Reload-Button-UserScript
+// @website         https://github.com/CortezJEL/Reload-Button-UserScript
+// @downloadURL     https://github.com/CortezJEL/Reload-Button-UserScript/raw/main/Reload_Button.js
+// @updateURL       https://github.com/CortezJEL/Reload-Button-UserScript/raw/main/Reload_Button.js
+// @supportURL      https://github.com/CortezJEL/Reload-Button-UserScript/issues
 // @match           *://*.*/*
 // @include         *://*.*/*
 // @grant           GM_registerMenuCommand
