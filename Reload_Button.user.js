@@ -2,7 +2,7 @@
 // @name            Reload-Button-UserScript
 // @description     Adds a simple reload button
 // @license         AGPL-V3
-// @version         1.2.0
+// @version         1.2.2
 // @author          John Litzow
 // @namespace       https://www.searchforjohn.com/
 // @homepageURL     https://github.com/CortezJEL/Reload-Button-UserScript
@@ -14,20 +14,20 @@
 // @match           *://*.*/*
 // @include         *://*.*/*
 // @grant           GM_registerMenuCommand
+// @sandbox         raw
 // ==/UserScript==
 
 // Clear cache function
-export const clearCache = (reloadAfterClear = true) => {
-    if('caches' in window){
-        caches.keys().then((names) => {
-            names.forEach(async (name) => {
-                await caches.delete(name)
-            })
-        })
+function clearCache() {
+    // Clear local storage
+    localStorage.clear();
 
-        if(reloadAfterClear)
-            window.location.reload()
-    }
+    // Clear session storage
+    sessionStorage.clear();
+
+    document.cookie.split(";").forEach(function(c) {
+    document.cookie = c.trim().split("=")[0] + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
+    });
 }
 
 // Reload the current page
@@ -43,10 +43,9 @@ function reload() {
 // Fully reload the current page
 function fullReload() {
   try {
-    clearCache(false);
+    clearCache();
     // window.location.reload(true);
     location.reload(true);
-    clearCache(true);
   } catch (e) {
     console.error("Error full reloading the page:", e);
   }
